@@ -99,13 +99,13 @@
     "7265706c69717565", 
     "4e6f6d206465205a6575732021", 
     "696e64696365", 
-    "50657574206574726520717565206c61207265636f6e737472756374696f6e20647520746578746520747520706575782074726f75766572206c652066696c6d2021", // indice texte complet
-    "46696c6d352e68746d6c", // Film5.html
-    "6572726f72", // error
-    "646973706c6179", // display
-    "626c6f636b", // block
-    "676574456c656d656e7442794964", // getElementById
-    "76616c7565" // value
+    "50657574206574726520717565206c61207265636f6e737472756374696f6e20647520746578746520747520706575782074726f75766572206c652066696c6d2021", // indice complet
+    "46696c6d352e68746d6c", // 'Film5.html'
+    "6572726f72", // 'error'
+    "646973706c6179", // 'display'
+    "626c6f636b", // 'block'
+    "676574456c656d656e7442794964", // 'getElementById'
+    "76616c7565" // 'value'
   ];
 
   const hexToStr = hex => hex.replace(/../g, c => String.fromCharCode(parseInt(c, 16)));
@@ -113,10 +113,16 @@
   localStorage.setItem(hexToStr(_0xarr[1]), hexToStr(_0xarr[2]));
   localStorage.setItem(hexToStr(_0xarr[3]), hexToStr(_0xarr[4]));
 
+  function normaliser(txt) {
+    return txt.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+
   function verifierReponse(e) {
     e.preventDefault();
-    const userAnswer = document[hexToStr(_0xarr[9])]("reponse")[hexToStr(_0xarr[10])].trim();
-    if (userAnswer.toLowerCase() === hexToStr(_0xarr[0]).toLowerCase()) {
+    const userAnswer = normaliser(document[hexToStr(_0xarr[9])]("reponse")[hexToStr(_0xarr[10])]);
+    const bonneReponse = normaliser(hexToStr(_0xarr[0]));
+    
+    if (userAnswer === bonneReponse) {
       window.location.href = hexToStr(_0xarr[5]);
     } else {
       document[hexToStr(_0xarr[9])](hexToStr(_0xarr[6]))[hexToStr(_0xarr[7])] = hexToStr(_0xarr[8]);
@@ -126,6 +132,7 @@
   document.getElementById("filmForm").addEventListener("submit", verifierReponse);
 })();
 </script>
+
 
 </body>
 </html>
