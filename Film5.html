@@ -31,6 +31,14 @@
       border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
+    /* Bloc haut gauche */
+    .film-trouve {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      text-align: left;
+    }
+
     h2 {
       font-size: 2.4rem;
       margin-bottom: 20px;
@@ -94,7 +102,23 @@
   </style>
 </head>
 <body>
-
+  <div class="film-trouve">
+  <h6 class="text-white mb-2">Films trouvés :</h6>
+  <div class="d-flex gap-2 flex-wrap">
+    <div class="card" style="width: 6rem;">
+      <img src="file:///C:/CESI/SiteJeuHackerTestFilms/AfficheFilms/dinerdecon.webp" class="card-img-top" alt="Un dîner de con">
+    </div>
+    <div class="card" style="width: 6rem;">
+      <img src="file:///C:/CESI/SiteJeuHackerTestFilms/AfficheFilms/fightclub.jpg" class="card-img-top" alt="Fight Club">
+    </div>
+    <div class="card" style="width: 6rem;">
+      <img src="file:///C:/CESI/SiteJeuHackerTestFilms/AfficheFilms/lacitedelapeur.webp" class="card-img-top" alt="La Cité de la Peur">
+    </div>
+    <div class="card" style="width: 6rem;">
+      <img src="file:///C:/CESI/SiteJeuHackerTestFilms/AfficheFilms/retourverslefutur.jpg" class="card-img-top" alt="Retour vers le futur">
+    </div>
+  </div>
+</div>
   <div class="glass">
     <h2>🎬 Étape 5 : Trouve la réplique</h2>
 
@@ -112,19 +136,27 @@
   </div>
 
  <script>
-    function verifierReponse() {
-      const reponse = document.getElementById('reponse').value.trim();
-      const bonneReponse = "Very bad trip";
+  function decoder(txt) {
+    return atob(txt);
+  }
 
-      if (reponse === bonneReponse) {
-        window.location.href = "Fin.html";
-        return false;
-      } else {
-        document.getElementById('error').style.display = 'block';
-        return false;
-      }
+  function normaliser(txt) {
+    return txt.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function verifierReponse() {
+    const reponse = normaliser(document.getElementById('reponse').value);
+    const bonneReponse = normaliser(decoder("VmVyeSBiYWQgdHJpcA==")); 
+
+    if (reponse === bonneReponse) {
+      window.location.href = "Fin.html";
+      return false;
+    } else {
+      document.getElementById('error').style.display = 'block';
+      return false;
     }
-  </script>
+  }
+</script>
 
 </body>
 </html>

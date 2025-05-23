@@ -108,7 +108,7 @@
       <div>
         <p>fausse piste 2</p>
         <div>
-          <p>Il est mignon monsieur Pignon, il est méchant monsieur Brochant !</p>
+        
           <div>
             <p>fausse piste 3</p>
             <div>
@@ -117,6 +117,8 @@
                 <p>fausse piste 5</p>
               </div>
             </div>
+             <p>Il est mignon monsieur Pignon, il est méchant monsieur Brochant !</p>
+
           </div>
         </div>
         <p>fausse piste 6</p>
@@ -135,7 +137,7 @@
   <script>
     function verifierReponse() {
   var a = document.getElementById("reponse").value.trim().toLowerCase().replace(/\s+/g,"");
-  var correctAnswer = "un diner de con".toLowerCase().replace(/\s+/g,""); // "undinerdecon"
+  var correctAnswer = "le diner de con".toLowerCase().replace(/\s+/g,""); // "undinerdecon"
   if (a === correctAnswer) {
     window.location.href = "Film2.html";
     return false;
