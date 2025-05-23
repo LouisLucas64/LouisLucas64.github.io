@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <h4>Film trouvés : Un diner de con / Fight club / La cité de la peur</h4>
   <title>Étape 4 - Cherche la réplique</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
@@ -29,24 +28,11 @@
       box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.15);
     }
-
-     /* Bloc haut gauche */
     .film-trouve {
       position: absolute;
       top: 15px;
       left: 15px;
       text-align: left;
-    }
-
-    h2 {
-      font-size: 2.4rem;
-      margin-bottom: 20px;
-    }
-    p.indice-text {
-      font-size: 1.2rem;
-      margin-top: 20px;
-      font-style: italic;
-      user-select: text;
     }
     input.form-control {
       margin-top: 25px;
@@ -78,34 +64,28 @@
   </style>
 </head>
 <body>
+
   <div class="film-trouve">
-  <h6 class="text-white mb-2">Films trouvés :</h6>
-  <div class="d-flex gap-2">
-    <div class="card" style="width: 6rem;">
-      <img src="https://louislucas64.github.io/AfficheFilms/dinerdecon.webp" class="card-img-top" alt="Un dîner de con">
-    </div>
-    <div class="card" style="width: 6rem;">
-      <img src="https://louislucas64.github.io/AfficheFilms/fightclub.jpg" class="card-img-top" alt="Fight Club">
-    </div>
-    <div class="card" style="width: 6rem;">
-      <img src="file:///C:/CESI/SiteJeuHackerTestFilms/AfficheFilms/lacitedelapeur.webp" class="card-img-top" alt="La Cité de la Peur">
+    <h6 class="text-white mb-2">Films trouvés :</h6>
+    <div class="d-flex gap-2">
+      <div class="card" style="width: 6rem;">
+        <img src="https://louislucas64.github.io/AfficheFilms/dinerdecon.webp" class="card-img-top" alt="Un dîner de con">
+      </div>
+      <div class="card" style="width: 6rem;">
+        <img src="https://louislucas64.github.io/AfficheFilms/fightclub.jpg" class="card-img-top" alt="Fight Club">
+      </div>
+      <div class="card" style="width: 6rem;">
+        <img src="https://louislucas64.github.io/AfficheFilms/lacitedelapeur.webp" class="card-img-top" alt="La Cité de la Peur">
+      </div>
     </div>
   </div>
-</div>
-
-
-
 
   <div class="glass">
     <h2>🎬 Étape 4 : Cherche la réplique</h2>
+    <p>les films qui aiment les cookies sont les meilleurs !</p>
+    <p class="text">Il avançait sans savoir où Le mènerait le Futur, mais un instinct profond le poussait Vers ce Retour inattendu.</p>
 
-    <p>Ce film aime le stockage local</p>
-
-    <p class="text">
-      Il avançait sans savoir où Le mènerait le Futur, mais un instinct profond le poussait Vers ce Retour inattendu.
-    </p>
-
-    <form id="filmForm" onsubmit="return verifierReponse()">
+    <form id="filmForm">
       <input type="text" id="reponse" name="reponse" placeholder="Entre le nom du film" class="form-control" required autocomplete="off" />
       <button type="submit" class="btn-submit">Valider</button>
       <div id="error" class="error-msg">Mauvaise réponse, essaie encore !</div>
@@ -119,36 +99,31 @@
     "7265706c69717565", 
     "4e6f6d206465205a6575732021", 
     "696e64696365", 
-    "50657574206574726520717565206c61207265636f6e737472756374696f6e20747520706575782074726f75766572206c652066696c6d2021", 
-    "46696c6d352e68746d6c",
-    "6572726f72",
-    "646973706c6179",
-    "626c6f636b", 
-    "676574456c656d656e7442794964",
-    "76616c7565", 
+    "50657574206574726520717565206c61207265636f6e737472756374696f6e20647520746578746520747520706575782074726f75766572206c652066696c6d2021", // indice texte complet
+    "46696c6d352e68746d6c", // Film5.html
+    "6572726f72", // error
+    "646973706c6179", // display
+    "626c6f636b", // block
+    "676574456c656d656e7442794964", // getElementById
+    "76616c7565" // value
   ];
 
-  function hexToStr(hex) {
-    let str = '';
-    for (let i = 0; i < hex.length; i += 2) {
-      str += String.fromCharCode(parseInt(hex.substr(i, 2), 16));
-    }
-    return str;
-  }
+  const hexToStr = hex => hex.replace(/../g, c => String.fromCharCode(parseInt(c, 16)));
 
   localStorage.setItem(hexToStr(_0xarr[1]), hexToStr(_0xarr[2]));
   localStorage.setItem(hexToStr(_0xarr[3]), hexToStr(_0xarr[4]));
 
-  window.verifierReponse = function() {
-    const userAnswer = document[hexToStr(_0xarr[9])]( "reponse")[hexToStr(_0xarr[10])].trim();
-    if (userAnswer === hexToStr(_0xarr[0])) {
+  function verifierReponse(e) {
+    e.preventDefault();
+    const userAnswer = document[hexToStr(_0xarr[9])]("reponse")[hexToStr(_0xarr[10])].trim();
+    if (userAnswer.toLowerCase() === hexToStr(_0xarr[0]).toLowerCase()) {
       window.location.href = hexToStr(_0xarr[5]);
-      return false;
     } else {
       document[hexToStr(_0xarr[9])](hexToStr(_0xarr[6]))[hexToStr(_0xarr[7])] = hexToStr(_0xarr[8]);
-      return false;
     }
-  };
+  }
+
+  document.getElementById("filmForm").addEventListener("submit", verifierReponse);
 })();
 </script>
 
